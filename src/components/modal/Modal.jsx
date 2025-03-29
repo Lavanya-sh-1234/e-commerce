@@ -6,6 +6,7 @@ import {
   TransitionChild,
 } from "@headlessui/react";
 import { Fragment, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Modal(
   {name,
@@ -24,8 +25,16 @@ export default function Modal(
     setIsOpen(false);
   }
 
+  const navigate = useNavigate();
+  
+
   function openModal() {
-    setIsOpen(true);
+    const user = JSON.parse(localStorage.getItem("user"));
+    if(!user){
+      navigate("../login")
+    }else{
+      setIsOpen(true);
+    }
   }
 
   return (
@@ -51,7 +60,7 @@ export default function Modal(
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
+            <div className="fixed inset-0 bg-[#000000a6] bg-opacity-25" />
           </TransitionChild>
 
           <div className="fixed inset-0 overflow-y-auto">
@@ -143,6 +152,7 @@ export default function Modal(
                           <button
                             onClick={() => {
                               buyNow(), closeModal();
+                              navigate("/")
                             }}
                             type="button"
                             className="focus:outline-none w-full text-white bg-violet-600 hover:bg-violet-800  outline-0 font-medium rounded-lg text-sm px-5 py-2.5 "

@@ -85,7 +85,7 @@ export default function Login() {
         </div>
         <div>
           <h2 className="text-white">
-            Don't have an account
+            Don't have an account{" "}
             <Link className=" text-yellow-500 font-bold" to={"/signup"}>
               Signup
             </Link>

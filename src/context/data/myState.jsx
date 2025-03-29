@@ -89,12 +89,14 @@ export default function MyState(props) {
 
   const getProductData = async () => {
     try {
+      console.log({fireDB})
       const q = query(collection(fireDB, "products"), orderBy("time"));
       const data = onSnapshot(q, (QuerySnapshot) => {
         let productsArray = [];
         QuerySnapshot.forEach((doc) => {
           productsArray.push({ ...doc.data(), id: doc.id });
         });
+        console.log({productsArray})
         setProduct(productsArray);
         setLoading(false);
       });

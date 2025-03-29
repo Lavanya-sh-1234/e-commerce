@@ -26,6 +26,11 @@ export default function Navbar() {
     window.location.href = "./login";
   };
 
+  const login = () => {
+    localStorage.clear("user");
+    window.location.href = "./login";
+  };
+
   const cartItems = useSelector((state) => state.cart); 
 
   useEffect(() => {
@@ -51,7 +56,7 @@ export default function Navbar() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
+            <div className="fixed inset-0  bg-[#000000a6] bg-opacity-25" />
           </TransitionChild>
 
           <div className="fixed inset-0 z-40 flex">
@@ -67,8 +72,8 @@ export default function Navbar() {
               <DialogPanel
                 className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl"
                 style={{
-                  backgroundColor: mode === "dark" ? "rgb(40, 44, 52)" : "",
-                  color: mode === "dark" ? "white" : "",
+                  backgroundColor: mode === 'dark' ? 'rgb(40, 44, 52)' : '',
+                  color: mode === 'dark' ? 'white' : '',
                 }}
               >
                 <div className="flex px-4 pb-2 pt-28">
@@ -84,9 +89,9 @@ export default function Navbar() {
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                   <div className="flow-root">
                     <Link
-                      to={"/allproducts"}
+                      to={'/allproducts'}
                       className="-m-2 block p-2 font-medium text-gray-900 "
-                      style={{ color: mode === "dark" ? "white" : "" }}
+                      style={{ color: mode === 'dark' ? 'white' : '' }}
                     >
                       All Products
                     </Link>
@@ -95,29 +100,29 @@ export default function Navbar() {
                   {user ? (
                     <div className="flow-root">
                       <Link
-                        to={"/order"}
-                        style={{ color: mode === "dark" ? "white" : "" }}
+                        to={'/order'}
+                        style={{ color: mode === 'dark' ? 'white' : '' }}
                         className="-m-2 block p-2 font-medium text-gray-900"
                       >
                         Order
                       </Link>
                     </div>
                   ) : (
-                    ""
+                    ''
                   )}
 
-                  {user?.user?.email === "lovy@34gmail.com" ? (
+                  {user?.user?.email === 'lovy@34gmail.com' ? (
                     <div className="flow-root">
                       <Link
-                        to={"/dashboard"}
+                        to={'/dashboard'}
                         className="-m-2 block p-2 font-medium text-gray-900"
-                        style={{ color: mode === "dark" ? "white" : "" }}
+                        style={{ color: mode === 'dark' ? 'white' : '' }}
                       >
                         Admin
                       </Link>
                     </div>
                   ) : (
-                    ""
+                    ''
                   )}
 
                   {user ? (
@@ -125,17 +130,30 @@ export default function Navbar() {
                       <a
                         onClick={logout}
                         className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer"
-                        style={{ color: mode === "dark" ? "white" : "" }}
+                        style={{ color: mode === 'dark' ? 'white' : '' }}
                       >
                         Logout
                       </a>
                     </div>
                   ) : (
-                    ""
-                  )} 
+                    ''
+                  )}
+                 {!user ? (
+                    <div className="flow-root">
+                      <a
+                        onClick={login}
+                        className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer"
+                        style={{ color: mode === 'dark' ? 'white' : '' }}
+                      >
+                        Login
+                      </a>
+                    </div>
+                  ) : (
+                    ''
+                  )}
                   <div className="flow-root">
                     <Link
-                      to={"/"}
+                      to={'/'}
                       className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer"
                     >
                       <img
@@ -156,7 +174,7 @@ export default function Navbar() {
                     />
                     <span
                       className="ml-3 block text-base font-medium text-gray-900"
-                      style={{ color: mode === "dark" ? "white" : "" }}
+                      style={{ color: mode === 'dark' ? 'white' : '' }}
                     >
                       INDIA
                     </span>
@@ -174,8 +192,8 @@ export default function Navbar() {
         <p
           className="flex h-10 items-center justify-center bg-pink-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8"
           style={{
-            backgroundColor: mode === "dark" ? "rgb(62 64 66)" : "",
-            color: mode === "dark" ? "white" : "",
+            backgroundColor: mode === 'dark' ? 'rgb(62 64 66)' : '',
+            color: mode === 'dark' ? 'white' : '',
           }}
         >
           Get free delivery on orders over ₹300
@@ -185,8 +203,8 @@ export default function Navbar() {
           aria-label="Top"
           className="bg-gray-100 px-4 sm:px-6 lg:px-8 shadow-xl "
           style={{
-            backgroundColor: mode === "dark" ? "#282c34" : "",
-            color: mode === "dark" ? "white" : "",
+            backgroundColor: mode === 'dark' ? '#282c34' : '',
+            color: mode === 'dark' ? 'white' : '',
           }}
         >
           <div className="">
@@ -196,8 +214,8 @@ export default function Navbar() {
                 className="rounded-md bg-white p-2 text-gray-400 lg:hidden"
                 onClick={() => setOpen(true)}
                 style={{
-                  backgroundColor: mode === "dark" ? "rgb(80 82 87)" : "",
-                  color: mode === "dark" ? "white" : "",
+                  backgroundColor: mode === 'dark' ? 'rgb(80 82 87)' : '',
+                  color: mode === 'dark' ? 'white' : '',
                 }}
               >
                 <span className="sr-only">Open menu</span>
@@ -219,11 +237,11 @@ export default function Navbar() {
 
               {/* Logo */}
               <div className="ml-4 flex lg:ml-0">
-                <Link to={"/"} className="flex">
+                <Link to={'/'} className="flex">
                   <div className="flex ">
                     <h1
                       className=" text-2xl font-bold text-black  px-2 py-1 rounded"
-                      style={{ color: mode === "dark" ? "white" : "" }}
+                      style={{ color: mode === 'dark' ? 'white' : '' }}
                     >
                       E-Bharat
                     </h1>
@@ -234,45 +252,57 @@ export default function Navbar() {
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                   <Link
-                    to={"/allproducts"}
+                    to={'/allproducts'}
                     className="text-sm font-medium text-gray-700 "
-                    style={{ color: mode === "dark" ? "white" : "" }}
+                    style={{ color: mode === 'dark' ? 'white' : '' }}
                   >
                     All Products
                   </Link>
                   {user ? (
                     <Link
-                      to={"/order"}
+                      to={'/order'}
                       className="text-sm font-medium text-gray-700 "
-                      style={{ color: mode === "dark" ? "white" : "" }}
+                      style={{ color: mode === 'dark' ? 'white' : '' }}
                     >
                       Order
                     </Link>
                   ) : (
-                    ""
+                    ''
                   )}
-                  {user?.user?.email === "lovy@34gmail.com" ? (
+                  {user?.user?.email === 'lovy@34gmail.com' ? (
                     <Link
-                      to={"/dashboard"}
+                      to={'/dashboard'}
                       className="text-sm font-medium text-gray-700 "
-                      style={{ color: mode === "dark" ? "white" : "" }}
+                      style={{ color: mode === 'dark' ? 'white' : '' }}
                     >
                       Admin
                     </Link>
                   ) : (
-                    ""
+                    ''
                   )}
 
                   {user ? (
                     <a
                       onClick={logout}
                       className="text-sm font-medium text-gray-700 cursor-pointer  "
-                      style={{ color: mode === "dark" ? "white" : "" }}
+                      style={{ color: mode === 'dark' ? 'white' : '' }}
                     >
                       Logout
                     </a>
                   ) : (
-                    ""
+                    ''
+                  )}
+
+                  {!user ? (
+                    <a
+                      onClick={login}
+                      className="text-sm font-medium text-gray-700 cursor-pointer  "
+                      style={{ color: mode === 'dark' ? 'white' : '' }}
+                    >
+                      Login
+                    </a>
+                  ) : (
+                    ''
                   )}
                 </div>
 
@@ -285,7 +315,7 @@ export default function Navbar() {
                     />
                     <span
                       className="ml-3 block text-sm font-medium"
-                      style={{ color: mode === "dark" ? "white" : "" }}
+                      style={{ color: mode === 'dark' ? 'white' : '' }}
                     >
                       INDIA
                     </span>
@@ -304,12 +334,12 @@ export default function Navbar() {
                 {/* Search */}
                 <div className="flex lg:ml-6">
                   <button className="" onClick={toggleMode}>
-                    {mode === "light" ? (
+                    {mode === 'light' ? (
                       <FiSun className="" size={30} />
-                    ) : "dark" ? (
+                    ) : 'dark' ? (
                       <BsFillCloudSunFill size={30} />
                     ) : (
-                      ""
+                      ''
                     )}
                   </button>
                 </div>
@@ -317,9 +347,9 @@ export default function Navbar() {
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
                   <Link
-                    to={"/cart"}
+                    to={'/cart'}
                     className="group -m-2 flex items-center p-2"
-                    style={{ color: mode === "dark" ? "white" : "" }}
+                    style={{ color: mode === 'dark' ? 'white' : '' }}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -338,7 +368,7 @@ export default function Navbar() {
 
                     <span
                       className="ml-2 text-sm font-medium text-gray-700 group-"
-                      style={{ color: mode === "dark" ? "white" : "" }}
+                      style={{ color: mode === 'dark' ? 'white' : '' }}
                     >
                       {cartItems.length}
                     </span>

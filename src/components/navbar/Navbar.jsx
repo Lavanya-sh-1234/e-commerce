@@ -9,7 +9,7 @@ import {
 import myContext from "../../context/data/myContext";
 import { BsFillCloudSunFill } from "react-icons/bs";
 import { FiSun } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RxCross2 } from "react-icons/rx"; 
 import { useSelector } from "react-redux";
 
@@ -20,15 +20,16 @@ export default function Navbar() {
   const { mode, toggleMode } = context;
 
   const user = JSON.parse(localStorage.getItem("user"));
+  const navigate = useNavigate();
 
   const logout = () => {
     localStorage.clear("user");
-    window.location.href = "./login";
+    navigate("/login")
   };
 
   const login = () => {
     localStorage.clear("user");
-    window.location.href = "./login";
+    navigate("/login")
   };
 
   const cartItems = useSelector((state) => state.cart); 

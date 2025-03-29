@@ -3,12 +3,14 @@ import myContext from "../../context/data/myContext";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/cartSlice";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function ProductCard() {
   const context = useContext(myContext);
   const { mode, product, searchkey, filterType, filterPrice } = context;
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const addCart = (product) => {
     const productData = {
@@ -45,7 +47,7 @@ export default function ProductCard() {
 
               return (
                 <div
-                  onClick={() => (window.location.href = `/productinfo/${id}`)}
+                  onClick={() => (navigate(`/productinfo/${id}`))}
                   className="p-4 md:w-1/4  drop-shadow-lg "
                   key={index}
                 >

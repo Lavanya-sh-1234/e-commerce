@@ -8,7 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 function DashboardTab() {
   const context = useContext(myContext);
-  const { mode, product, edithandle, deleteProduct, order } = context;
+  const { mode, product, edithandle, deleteProduct, order,user } = context;
   const navigate = useNavigate();
 
   const goToAdd = () => {
@@ -417,29 +417,20 @@ function DashboardTab() {
                       <th scope="col" className="px-6 py-3">
                         S.No
                       </th>
-
                       <th scope="col" className="px-6 py-3">
                         Name
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Address
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Pincode
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Phone Number
                       </th>
                       <th scope="col" className="px-6 py-3">
                         Email
                       </th>
                       <th scope="col" className="px-6 py-3">
-                        Date
+                        User Id
                       </th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr
+                  {user.map((cust, ind) =>
+                    <tr key={cust.uid}
                       className="bg-gray-50 border-b  dark:border-gray-700"
                       style={{
                         backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
@@ -450,45 +441,30 @@ function DashboardTab() {
                         className="px-6 py-4 text-black "
                         style={{ color: mode === "dark" ? "white" : "" }}
                       >
-                        1.
+                        {ind+1}.
                       </td>
                       <td
                         className="px-6 py-4 text-black "
                         style={{ color: mode === "dark" ? "white" : "" }}
                       >
-                        Name
+                        {cust.name}
                       </td>
                       <td
                         className="px-6 py-4 text-black "
                         style={{ color: mode === "dark" ? "white" : "" }}
                       >
-                        Address
+                        {cust.email}
                       </td>
                       <td
                         className="px-6 py-4 text-black "
                         style={{ color: mode === "dark" ? "white" : "" }}
                       >
-                        181919
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        1991818818
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        kkk@gmail.com
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        12 Aug 2019
+                       {cust.uid}
                       </td>
                     </tr>
+                  
+                  )}
+                
                   </tbody>
                 </table>
               </div>

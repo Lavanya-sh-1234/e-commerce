@@ -16,9 +16,11 @@ import {
 } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { fireDB } from "../../firebase/FirebaseConfig";
+import { useNavigate } from "react-router-dom";
 
 export default function MyState(props) {
   const [mode, setMode] = useState("light");
+  const navigate = useNavigate();
 
   const toggleMode = () => {
     if (mode === "light") {
@@ -62,7 +64,7 @@ export default function MyState(props) {
       await addDoc(productRef, products);
       toast.success("Product added successfully");
       setTimeout(() => {
-        window.location.href = "/dashboard";
+        navigate("/dashboard");
       }, 800);
       getProductData(); // Fetch latest data
       setProducts({
@@ -89,14 +91,12 @@ export default function MyState(props) {
 
   const getProductData = async () => {
     try {
-      console.log({fireDB})
       const q = query(collection(fireDB, "products"), orderBy("time"));
       const data = onSnapshot(q, (QuerySnapshot) => {
         let productsArray = [];
         QuerySnapshot.forEach((doc) => {
           productsArray.push({ ...doc.data(), id: doc.id });
         });
-        console.log({productsArray})
         setProduct(productsArray);
         setLoading(false);
       });
@@ -120,7 +120,7 @@ export default function MyState(props) {
       getProductData();
       setLoading(false);
       setTimeout(() => {
-        window.location.href = "/dashboard";
+        navigate("/dashboard");
       }, 800);
     } catch (error) {
       setLoading(false);

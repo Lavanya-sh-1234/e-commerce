@@ -21,8 +21,8 @@ import Allproducts from "./pages/allproducts/AllProducts";
 
 export default function App() {
   return (
-    <MyState>
-      <Router>
+    <Router>
+      <MyState>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/allproducts" element={<Allproducts />} />
@@ -65,8 +65,8 @@ export default function App() {
           <Route path="/productinfo/:id" element={<ProductInfo />} />
         </Routes>
         <ToastContainer />
-      </Router>
-    </MyState>
+      </MyState>
+    </Router>
   );
 }
 

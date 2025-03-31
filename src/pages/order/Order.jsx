@@ -35,9 +35,13 @@ function Order() {
                         <div
                           className="mb-6 rounded-lg p-6 shadow-md flex items-center gap-4 transition duration-300 transform hover:scale-105"
                           style={{
-                            backgroundColor: mode === "dark" ? "#282c34" : "#ffffff",
+                            backgroundColor:
+                              mode === "dark" ? "#282c34" : "#ffffff",
                             color: mode === "dark" ? "white" : "#333",
-                            border: mode === "dark" ? "1px solid #444" : "1px solid #ddd",
+                            border:
+                              mode === "dark"
+                                ? "1px solid #444"
+                                : "1px solid #ddd",
                           }}
                         >
                           <img
@@ -54,14 +58,7 @@ function Order() {
                             >
                               {item.title}
                             </h2>
-                            <p
-                              className="text-sm mt-1"
-                              style={{
-                                color: mode === "dark" ? "#ddd" : "#666",
-                              }}
-                            >
-                              {item.description}
-                            </p>
+
                             <p
                               className="font-semibold mt-2"
                               style={{
